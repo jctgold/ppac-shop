@@ -31,7 +31,15 @@ a {
 }
 
 .dropdown-container {
-  @apply absolute left-0 w-36 origin-top-right px-5 py-4 mt-5 border border-black border-t-0;
+  @apply absolute left-0 w-36 origin-top-right py-4 mt-5 border border-black bg-white;
+}
+
+.dropdown-item {
+  @apply block py-2 px-5 hover:underline underline-offset-4;
+}
+
+.dropdown-link {
+  @apply hover:border-b border-black;
 }
 
 .footer-list-title {
@@ -40,4 +48,12 @@ a {
 
 .footer-list-item {
   @apply uppercase text-xs pb-1;
+}
+
+.on-image-text {
+  @apply absolute text-3xl uppercase text-white font-semibold top-1/2 left-1/2 translate-x-neg-1/2 translate-y-neg-1/2 content-center text-center;
+}
+
+.default-button {
+  @apply uppercase text-gray-500 text-xs hover:underline underline-offset-4;
 }

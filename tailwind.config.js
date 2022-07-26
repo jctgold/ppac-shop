@@ -5,7 +5,17 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'home-slide': "url('/images/home-main.jpg')",
+      },
+      translate: {
+        'neg-1/2': '-50%',
+      },
+      aspectRatio: {
+        '3/4': '3 / 4',
+      },
+    },
   },
   plugins: [],
 };
