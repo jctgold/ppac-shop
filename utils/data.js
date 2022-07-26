@@ -5,9 +5,12 @@ const data = {
       slug: 'oversize-tie-dye-check-shirt',
       description: 'Oversize tie-dye Check Short Sleeve',
       price: 1495,
-      sale_price: 395,
+      // sale_price: 1495,
       category: 'Shirts',
-      image: '/images/products/shirt1-1.jpg',
+      images: [
+        '/images/products/shirt1-1.jpg',
+        '/images/products/shirt1-2.jpg',
+      ],
       countInStock: 20,
     },
     {
@@ -17,7 +20,7 @@ const data = {
       price: 1245,
       sale_price: 355,
       category: 'Shirts',
-      image: '/images/products/tee1-1.jpg',
+      images: ['/images/products/tee1-1.jpg', '/images/products/tee1-2.jpg'],
       countInStock: 20,
     },
     {
@@ -27,7 +30,10 @@ const data = {
       price: 1495,
       sale_price: 395,
       category: 'Shirts',
-      image: '/images/products/sweatshirt1-1.jpg',
+      images: [
+        '/images/products/sweatshirt1-1.jpg',
+        '/images/products/sweatshirt1-2.jpg',
+      ],
       countInStock: 20,
     },
   ],

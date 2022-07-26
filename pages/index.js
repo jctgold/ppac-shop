@@ -23,7 +23,7 @@ export default function Home() {
             <img
               src="images/clothing-1.jpg"
               alt="clothing"
-              className="brightness-90 aspect-3/4 group-hover:brightness-75"
+              className="brightness-90 aspect-3/4 group-hover:brightness-50 duration-500"
             />
             <div className="on-image-text">Clothing</div>
           </a>
@@ -33,7 +33,7 @@ export default function Home() {
             <img
               src="images/bag-2.jpg"
               alt="clothing"
-              className="brightness-90 aspect-3/4 group-hover:brightness-75"
+              className="brightness-90 aspect-3/4 group-hover:brightness-50 duration-500"
             />
             <div className="on-image-text">Bags</div>
           </a>
@@ -43,7 +43,7 @@ export default function Home() {
             <img
               src="images/socks-1.jpg"
               alt="clothing"
-              className="brightness-90 aspect-3/4 group-hover:brightness-75"
+              className="brightness-90 aspect-3/4 group-hover:brightness-50 group-hover::transition-all duration-500"
             />
             <div className="on-image-text">Accessories</div>
           </a>
@@ -68,11 +68,11 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="flex flex-col justify-center p-12 md:px-24 md:py-20 gap-2">
+      <div className="flex flex-col justify-center p-12 px-24 md:py-20 gap-2">
         <h1 className="text-2xl uppercase font-semibold text-center">
           New Arrivals
         </h1>
-        <button className="default-button" type="button">
+        <button className="default-button m-auto" type="button">
           View All
         </button>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">

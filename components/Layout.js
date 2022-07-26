@@ -114,8 +114,10 @@ export default function Layout({ title, children }) {
                 {/* <li className="px-5 py-3 pt-5 md:hidden">Account</li> */}
               </ul>
             </div>
-            <div className="flex order-2 text-center justify-center items-center py-2 text-4xl font-semibold">
-              PPAC
+            <div className="flex order-2 text-center justify-center items-center py-2 text-4xl font-semibold tracking-tight">
+              <Link href="/">
+                <a>PPAC</a>
+              </Link>
             </div>
             <div className="flex order-3 flex-row gap-2 justify-end items-center md:gap-5 px-5">
               <button onClick={handleSearchFocus}>
@@ -200,10 +202,14 @@ export default function Layout({ title, children }) {
               <div className="footer-list-title">Socials</div>
               <ul>
                 <li className="footer-list-item">
-                  <Link href="#">Facebook</Link>
+                  <Link href="https://www.facebook.com/PeerPressureApparelCo">
+                    Facebook
+                  </Link>
                 </li>
                 <li className="footer-list-item">
-                  <Link href="#">Instagram</Link>
+                  <Link href="https://www.instagram.com/peerpressureapparelco/?hl=en">
+                    Instagram
+                  </Link>
                 </li>
               </ul>
             </div>
