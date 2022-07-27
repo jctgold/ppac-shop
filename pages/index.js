@@ -3,6 +3,7 @@ import Layout from '../components/Layout';
 import Link from 'next/link';
 import data from '../utils/data';
 import ProductItem from '../components/ProductItem';
+import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -20,30 +21,39 @@ export default function Home() {
       <div className="grid grid-cols-1 md:grid-cols-3 p-6 lg:p-12 gap-3">
         <Link href="#">
           <a className="relative group">
-            <img
-              src="images/clothing-1.jpg"
+            <Image
+              src="/images/clothing-1.jpg"
               alt="clothing"
               className="brightness-90 aspect-3/4 group-hover:brightness-50 duration-500"
+              width={450}
+              height={600}
+              layout="responsive"
             />
             <div className="on-image-text">Clothing</div>
           </a>
         </Link>
         <Link href="#">
           <a className="relative group">
-            <img
-              src="images/bag-2.jpg"
+            <Image
+              src="/images/bag-2.jpg"
               alt="clothing"
               className="brightness-90 aspect-3/4 group-hover:brightness-50 duration-500"
+              width={450}
+              height={600}
+              layout="responsive"
             />
             <div className="on-image-text">Bags</div>
           </a>
         </Link>
         <Link href="#">
           <a className="relative group">
-            <img
-              src="images/socks-1.jpg"
+            <Image
+              src="/images/socks-1.jpg"
               alt="clothing"
-              className="brightness-90 aspect-3/4 group-hover:brightness-50 group-hover::transition-all duration-500"
+              className="brightness-90 aspect-3/4 group-hover:brightness-50 duration-500"
+              width={450}
+              height={600}
+              layout="responsive"
             />
             <div className="on-image-text">Accessories</div>
           </a>
@@ -69,9 +79,7 @@ export default function Home() {
         </div>
       </div>
       <div className="flex flex-col justify-center p-12 px-24 md:py-20 gap-2">
-        <h1 className="text-2xl uppercase font-semibold text-center">
-          New Arrivals
-        </h1>
+        <h1 className="section-title">New Arrivals</h1>
         <button className="default-button m-auto" type="button">
           View All
         </button>

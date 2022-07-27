@@ -57,3 +57,15 @@ a {
 .default-button {
   @apply uppercase text-gray-500 text-xs hover:underline underline-offset-4;
 }
+
+.primary-button {
+  @apply uppercase bg-black text-white p-3 text-sm;
+}
+
+.section-title {
+  @apply text-xl uppercase font-semibold text-center;
+}
+
+.input-box {
+  @apply border border-black p-3 placeholder:text-black text-sm w-full;
+}
