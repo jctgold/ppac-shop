@@ -1,35 +1,35 @@
 import { Menu, Transition } from '@headlessui/react';
 import Head from 'next/head';
 import React, { Fragment, useState } from 'react';
-import { BiMenu, BiSearch, BiUser } from 'react-icons/bi';
-import { BsBag, BsPerson, BsSearch } from 'react-icons/bs';
+import { BiMenu } from 'react-icons/bi';
+import { BsBag, BsPerson } from 'react-icons/bs';
 import { AiOutlineDown } from 'react-icons/ai';
-import { GrClose } from 'react-icons/gr';
-import { RiSearchLine, RiUserLine, RiShoppingBagLine } from 'react-icons/ri';
-import {
-  IoSearchOutline,
-  IoCloseOutline,
-  IoPersonOutline,
-  IoBagOutline,
-  IoMenuOutline,
-} from 'react-icons/io5';
+import { IoSearchOutline, IoCloseOutline } from 'react-icons/io5';
 import DropdownLink from './DropdownLink';
 import Link from 'next/link';
+import Cart from './Cart';
 
 export default function Layout({ title, children }) {
   const [navOpen, setNavOpen] = useState(false);
   const [searchFocus, setSearchFocus] = useState(false);
+  const [showCart, setShowCart] = useState(false);
   const [search, setSearch] = useState('');
 
   const handleClearSearch = () => {
     setSearch('');
     setSearchFocus(false);
-    setNavOpen(false);
   };
 
   const handleNavMenu = () => {
     setNavOpen(!navOpen);
     setSearchFocus(false);
+  };
+
+  const handleBlurEvent = (event) => {
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      setNavOpen(false);
+      setSearchFocus(false);
+    }
   };
 
   const handleSearchFocus = () => {
@@ -47,7 +47,10 @@ export default function Layout({ title, children }) {
 
       <div className="flex flex-col justify-between">
         <header>
-          <nav className="fixed grid grid-cols-3 w-screen px-4 md:px-8 align-middle items-stretch justify-between border-b border-black bg-white z-10">
+          <nav
+            className="fixed grid grid-cols-3 w-screen px-4 md:px-8 align-middle items-stretch justify-between border-b border-black bg-white z-10"
+            onBlur={(event) => handleBlurEvent(event)}
+          >
             <button
               className="inline-flex order-1 md:hidden items-center ml-3 text-gray-400 rounded-lg hover:text-gray-900 focus:outline-none"
               type="button"
@@ -68,7 +71,7 @@ export default function Layout({ title, children }) {
             >
               <ul className="flex flex-col pb-4 md:pb-0 md:flex-row text-xs uppercase md:items-center whitespace-nowrap">
                 <li className="px-5 py-3">
-                  <Link href="#">New In</Link>
+                  <Link href="/collections/new-in">New In</Link>
                 </li>
                 <li className="py-3">
                   <Menu as="div" className="relative inline-block text-left">
@@ -86,22 +89,34 @@ export default function Layout({ title, children }) {
                     >
                       <Menu.Items className="dropdown-container">
                         <Menu.Item className="dropdown-item">
-                          <DropdownLink href="#">Shop all</DropdownLink>
+                          <DropdownLink href="/collections/all-products">
+                            Shop all
+                          </DropdownLink>
                         </Menu.Item>
                         <Menu.Item className="dropdown-item">
-                          <DropdownLink href="#">Outerwear</DropdownLink>
+                          <DropdownLink href="/collections/outerwear">
+                            Outerwear
+                          </DropdownLink>
                         </Menu.Item>
                         <Menu.Item className="dropdown-item">
-                          <DropdownLink href="#">Tees</DropdownLink>
+                          <DropdownLink href="/collections/tees">
+                            Tees
+                          </DropdownLink>
                         </Menu.Item>
                         <Menu.Item className="dropdown-item">
-                          <DropdownLink href="#">Bottoms</DropdownLink>
+                          <DropdownLink href="/collections/bottoms">
+                            Bottoms
+                          </DropdownLink>
                         </Menu.Item>
                         <Menu.Item className="dropdown-item">
-                          <DropdownLink href="#">Accessories</DropdownLink>
+                          <DropdownLink href="/collections/accessories">
+                            Accessories
+                          </DropdownLink>
                         </Menu.Item>
                         <Menu.Item className="dropdown-item">
-                          <DropdownLink href="#">Sale</DropdownLink>
+                          <DropdownLink href="/collections/sale">
+                            Sale
+                          </DropdownLink>
                         </Menu.Item>
                       </Menu.Items>
                     </Transition>
@@ -126,7 +141,7 @@ export default function Layout({ title, children }) {
               <button>
                 <BsPerson size={22} />
               </button>
-              <button>
+              <button onClick={() => setShowCart(!showCart)} type="button">
                 <BsBag size={19} />
               </button>
             </div>
@@ -213,7 +228,7 @@ export default function Layout({ title, children }) {
                 </li>
               </ul>
             </div>
-            <div className="">
+            <div>
               <div className="footer-list-title">Be the first to know</div>
               <div className="inline-flex">
                 <input
@@ -233,6 +248,8 @@ export default function Layout({ title, children }) {
             2022 &copy; Peer Pressure Apparel Co. | Project by Julia Guinto
           </div>
         </footer>
+
+        {showCart && <Cart onBackPress={() => setShowCart(!showCart)} />}
       </div>
     </>
   );

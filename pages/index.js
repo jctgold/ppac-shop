@@ -6,6 +6,7 @@ import ProductItem from '../components/ProductItem';
 import Image from 'next/image';
 
 export default function Home() {
+  const newArrivalItems = data.products.slice(0, 3);
   return (
     <Layout>
       <div className="h-screen bg-home-slide bg-cover flex flex-col gap-4 justify-center items-center bg-center">
@@ -80,12 +81,14 @@ export default function Home() {
       </div>
       <div className="flex flex-col justify-center p-12 px-24 md:py-20 gap-2">
         <h1 className="section-title">New Arrivals</h1>
-        <button className="default-button m-auto" type="button">
-          View All
-        </button>
+        <Link href={`/collections/new-in`}>
+          <button className="default-button m-auto" type="button">
+            View All
+          </button>
+        </Link>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-          {data.products.length > 0 &&
-            data.products.map((item) => (
+          {newArrivalItems.length > 0 &&
+            newArrivalItems.map((item) => (
               <ProductItem key={item.slug} item={item} />
             ))}
         </div>

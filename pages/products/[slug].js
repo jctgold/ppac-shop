@@ -70,7 +70,7 @@ export default function ProductScreen({}) {
                         className={`${
                           selectedSize === size.name &&
                           'underline underline-offset-4'
-                        } inline-block text-sm font-medium`}
+                        } inline-block text-sm`}
                         onClick={() => setSelectedSize(size.name)}
                       >
                         {size.name}
