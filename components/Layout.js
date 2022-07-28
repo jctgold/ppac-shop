@@ -8,6 +8,7 @@ import { IoSearchOutline, IoCloseOutline } from 'react-icons/io5';
 import DropdownLink from './DropdownLink';
 import Link from 'next/link';
 import Cart from './Cart';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export default function Layout({ title, children }) {
   const [navOpen, setNavOpen] = useState(false);
@@ -45,7 +46,7 @@ export default function Layout({ title, children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex flex-col justify-between">
+      <div className={`flex flex-col justify-between`}>
         <header>
           <nav
             className="fixed grid grid-cols-3 w-screen px-4 md:px-8 align-middle items-stretch justify-between border-b border-black bg-white z-10"
@@ -87,7 +88,7 @@ export default function Layout({ title, children }) {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="dropdown-container">
+                      <Menu.Items className="dropdown-container mt-5 py-4 w-36">
                         <Menu.Item className="dropdown-item">
                           <DropdownLink href="/collections/all-products">
                             Shop all
@@ -123,15 +124,15 @@ export default function Layout({ title, children }) {
                   </Menu>
                 </li>
                 <li className="px-5 py-3">
-                  <Link href="#">Collections</Link>
+                  <Link href="/collections">Collections</Link>
                 </li>
 
                 {/* <li className="px-5 py-3 pt-5 md:hidden">Account</li> */}
               </ul>
             </div>
-            <div className="flex order-2 text-center justify-center items-center py-2 text-4xl font-semibold tracking-tight">
+            <div className="flex order-2 text-center justify-center items-center py-2 text-4xl font-semibold tracking-tight select-none">
               <Link href="/">
-                <a>PPAC</a>
+                <a>REVER</a>
               </Link>
             </div>
             <div className="flex order-3 flex-row gap-2 justify-end items-center md:gap-5 px-5">
@@ -245,11 +246,13 @@ export default function Layout({ title, children }) {
             </div>
           </div>
           <div className="uppercase text-xs pt-12 text-center md:text-left text-gray-500">
-            2022 &copy; Peer Pressure Apparel Co. | Project by Julia Guinto
+            2022 &copy; Rever Apparel Co. | Project by Julia Guinto
           </div>
         </footer>
 
-        {showCart && <Cart onBackPress={() => setShowCart(!showCart)} />}
+        <AnimatePresence>
+          {showCart && <Cart onBackPress={() => setShowCart(!showCart)} />}
+        </AnimatePresence>
       </div>
     </>
   );

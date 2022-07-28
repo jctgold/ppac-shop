@@ -30,42 +30,48 @@ a {
   }
 }
 
-.dropdown-container {
-  @apply absolute left-0 w-36 origin-top-right py-4 mt-5 border border-black bg-white;
-}
+@layer components {
+  .dropdown-container {
+    @apply absolute origin-top-right py-2 border border-black bg-white;
+  }
 
-.dropdown-item {
-  @apply block py-2 px-5 hover:underline underline-offset-4;
-}
+  .dropdown-item {
+    @apply block py-2 px-5 hover:underline underline-offset-4;
+  }
 
-.dropdown-link {
-  @apply hover:border-b border-black;
-}
+  .dropdown-link {
+    @apply hover:border-b border-black;
+  }
 
-.footer-list-title {
-  @apply uppercase text-sm font-semibold mb-2;
-}
+  .footer-list-title {
+    @apply uppercase text-sm font-semibold mb-2;
+  }
 
-.footer-list-item {
-  @apply uppercase text-xs pb-1;
-}
+  .footer-list-item {
+    @apply uppercase text-xs pb-1;
+  }
 
-.on-image-text {
-  @apply absolute text-3xl uppercase text-white font-semibold top-1/2 left-1/2 translate-x-neg-1/2 translate-y-neg-1/2 content-center text-center;
-}
+  .on-image-text {
+    @apply absolute text-3xl uppercase text-white font-semibold top-1/2 left-1/2 translate-x-neg-1/2 translate-y-neg-1/2 text-center;
+  }
 
-.default-button {
-  @apply uppercase text-gray-500 text-xs hover:underline underline-offset-4;
-}
+  .default-button {
+    @apply uppercase text-gray-500 text-xs hover:underline underline-offset-4;
+  }
 
-.primary-button {
-  @apply uppercase bg-black text-white p-3 text-sm;
-}
+  .primary-button {
+    @apply uppercase bg-black text-white p-3 text-sm;
+  }
 
-.section-title {
-  @apply text-xl uppercase font-semibold text-center;
-}
+  .secondary-button {
+    @apply uppercase text-black p-3 text-sm border border-black;
+  }
 
-.input-box {
-  @apply border border-black p-3 placeholder:text-black text-sm w-full;
+  .section-title {
+    @apply text-xl uppercase font-semibold text-center;
+  }
+
+  .input-box {
+    @apply border border-black p-3 placeholder:text-black text-sm w-full;
+  }
 }
