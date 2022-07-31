@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
 import data from '../../utils/data';
 import Image from 'next/image';
+import NotFound from '../../components/NotFound';
 
 export default function ProductScreen({}) {
   const [selectedSize, setSelectedSize] = useState('XS');
@@ -13,8 +14,16 @@ export default function ProductScreen({}) {
   const { slug } = query;
   const product = data.products.find((x) => x.slug === slug);
 
+  if (!product)
+    return (
+      <NotFound
+        title="Product not found."
+        message="Our apologies. We cannot seem to find the item you are looking for.."
+      />
+    );
+
   return (
-    <Layout title={product && product.name}>
+    <Layout title={product.name}>
       <div className="mt-16 mb-12">
         <div className="flex flex-col md:flex-row p-4 md:p-12 gap-4 md:gap-8 w-full">
           <div className="flex flex-col md:flex-row gap-3 w-full justify-start md:align-top">

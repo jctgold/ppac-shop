@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import Layout from '../../components/Layout';
@@ -7,14 +7,25 @@ import ProductItem from '../../components/ProductItem';
 import { Menu, Transition } from '@headlessui/react';
 import { AiOutlineDown } from 'react-icons/ai';
 import DropdownLink from '../../components/DropdownLink';
+import NotFound from '../../components/NotFound';
 
 const totalProducts = 64;
 const loadedProducts = 16;
 
 export default function CollectionsScreen() {
-  const { query } = useRouter();
+  const router = useRouter();
+  const { query } = router;
   const { slug } = query;
   const collectionInfo = data.collections.find((x) => x.slug === slug);
+
+  if (!collectionInfo) {
+    return (
+      <NotFound
+        title="Broken Link."
+        message="Our apologies. We cannot seem to find the item you are looking for.."
+      />
+    );
+  }
 
   return (
     <Layout title={collectionInfo.name}>
@@ -23,7 +34,6 @@ export default function CollectionsScreen() {
           <h1 className="uppercase font-semibold text-xl">
             {collectionInfo.name}
           </h1>
-          {/* <div className="uppercase text-sm">Sort By +</div> */}
           <div className="py-3">
             <Menu as="div" className="relative inline-block text-left text-xs">
               <Menu.Button className="uppercase">
@@ -77,7 +87,9 @@ export default function CollectionsScreen() {
           <div className="w-64 h-0.5 bg-gray-200">
             <div
               className="bg-black h-full"
-              style={{ width: `${(loadedProducts / totalProducts) * 100}%` }}
+              style={{
+                width: `${(loadedProducts / totalProducts) * 100}%`,
+              }}
             />
           </div>
           <button className="secondary-button py-1.5 px-6 mt-4 font-medium">

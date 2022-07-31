@@ -1,4 +1,20 @@
+import bcryptjs from 'bcryptjs';
+
 const data = {
+  users: [
+    {
+      name: 'Julia',
+      email: 'julia@rever.com',
+      password: bcryptjs.hashSync('123456'),
+      isAdmin: true,
+    },
+    {
+      name: 'Sandra',
+      email: 'Sandra@gmail.com',
+      password: bcryptjs.hashSync('123456'),
+      isAdmin: false,
+    },
+  ],
   collections: [
     {
       name: 'All',
@@ -39,7 +55,7 @@ const data = {
         sale_price: null,
       },
       category: 'Shirts',
-      collection: ['Basic', 'Tees'],
+      collection: ['Basic', 'Shirt'],
       images: [
         '/images/products/shirt1-1.jpg',
         '/images/products/shirt1-2.jpg',
@@ -81,14 +97,6 @@ const data = {
           show: false,
         },
       ],
-      countInStock: {
-        xs: 0,
-        s: 1,
-        m: 0,
-        l: 0,
-        xl: 1,
-        xl: 1,
-      },
     },
     {
       name: 'Printed short sleeve oversize T-shirt',
@@ -143,14 +151,8 @@ const data = {
           show: false,
         },
       ],
-      countInStock: {
-        xs: 0,
-        s: 1,
-        m: 0,
-        l: 0,
-        xl: 1,
-        xl: 1,
-      },
+      rating: 5,
+      numReviews: 20,
     },
     {
       name: 'Extra loose short sleeve Tupac T-shirt',
@@ -203,14 +205,8 @@ const data = {
           show: false,
         },
       ],
-      countInStock: {
-        xs: 0,
-        s: 1,
-        m: 0,
-        l: 0,
-        xl: 1,
-        xl: 1,
-      },
+      rating: 5,
+      numReviews: 20,
     },
     {
       name: 'Short sleeve oversize T-shirt featuring bear print',
@@ -264,14 +260,8 @@ const data = {
           show: false,
         },
       ],
-      countInStock: {
-        xs: 0,
-        s: 1,
-        m: 0,
-        l: 0,
-        xl: 1,
-        xl: 1,
-      },
+      rating: 5,
+      numReviews: 20,
     },
     {
       name: 'Short sleeve T-shirt with print',
@@ -325,14 +315,8 @@ const data = {
           show: false,
         },
       ],
-      countInStock: {
-        xs: 0,
-        s: 1,
-        m: 0,
-        l: 0,
-        xl: 1,
-        xl: 1,
-      },
+      rating: 5,
+      numReviews: 20,
     },
     {
       name: 'Extra loose short sleeve T-shirt with print',
@@ -344,7 +328,6 @@ const data = {
       },
       collection: ['Basic', 'Tees'],
       images: ['/images/products/tee1-1.jpg', '/images/products/tee1-2.jpg'],
-      countInStock: 20,
       sizes: [
         {
           code: 's01-xs',
@@ -382,6 +365,8 @@ const data = {
           show: false,
         },
       ],
+      rating: 5,
+      numReviews: 20,
     },
     {
       name: 'Floral puff print T-shirt with long sleeves',
@@ -400,7 +385,6 @@ const data = {
         '/images/products/sweatshirt1-4.jpg',
         '/images/products/sweatshirt1-5.jpg',
       ],
-      countInStock: 20,
       sizes: [
         {
           code: 's01-xs',
@@ -438,6 +422,8 @@ const data = {
           show: false,
         },
       ],
+      rating: 5,
+      numReviews: 20,
     },
   ],
 };

@@ -142,8 +142,13 @@ export default function Layout({ title, children }) {
               <button>
                 <BsPerson size={22} />
               </button>
-              <button onClick={() => setShowCart(!showCart)} type="button">
+              <button
+                className="relative"
+                onClick={() => setShowCart(!showCart)}
+                type="button"
+              >
                 <BsBag size={19} />
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 border-white border-2 rounded-full" />
               </button>
             </div>
             <div

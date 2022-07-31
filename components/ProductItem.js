@@ -2,12 +2,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export default function ProductItem({ item }) {
   const [imageFocused, setImageFocused] = useState(false);
 
   return (
-    <div className="flex flex-col gap-3">
+    <motion.div
+      className="flex flex-col gap-3"
+      initial={{ y: 20 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <Link href={`/products/${item.slug}`}>
         <a
           onMouseEnter={() => setImageFocused(true)}
@@ -42,6 +48,6 @@ export default function ProductItem({ item }) {
           </div>
         </a>
       </Link>
-    </div>
+    </motion.div>
   );
 }
