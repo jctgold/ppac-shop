@@ -50,12 +50,12 @@ const data = {
       name: 'Oversize tie-dye Check Short Sleeve',
       slug: 'oversize-tie-dye-check-shirt',
       longDescription: 'Oversize tie-dye Check Short Sleeve',
+      shortDescription: null,
       prices: {
         original_price: 1495,
         sale_price: null,
       },
-      category: 'Shirts',
-      collection: ['Basic', 'Shirt'],
+      collections: ['basic', 'shirts'],
       images: [
         '/images/products/shirt1-1.jpg',
         '/images/products/shirt1-2.jpg',
@@ -102,11 +102,12 @@ const data = {
       name: 'Printed short sleeve oversize T-shirt',
       slug: 'printed-short-sleeve-oversize-t-shirt',
       longDescription: 'Printed short sleeve oversize T-shirt',
+      shortDescription: null,
       prices: {
         original_price: 1295,
         sale_price: null,
       },
-      collection: ['Basic', 'Tees'],
+      categories: ['basic', 'tees'],
       images: [
         '/images/products/shirt5-1.jpg',
         '/images/products/shirt5-2.jpg',
@@ -158,11 +159,12 @@ const data = {
       name: 'Extra loose short sleeve Tupac T-shirt',
       slug: 'extra-loose-short-sleeve-tupac-t-shirt',
       longDescription: 'Extra loose short sleeve Tupac T-shirt',
+      shortDescription: null,
       prices: {
         original_price: 1495,
         sale_price: null,
       },
-      collection: ['Basic', 'Tees'],
+      categories: ['basic', 'tees'],
       images: [
         '/images/products/shirt3-2.jpg',
         '/images/products/shirt3-3.jpg',
@@ -212,11 +214,12 @@ const data = {
       name: 'Short sleeve oversize T-shirt featuring bear print',
       slug: 'short-sleeve-oversize-t-shirt-featuring-bear-print',
       longDescription: 'Short sleeve oversize T-shirt featuring bear print',
+      shortDescription: null,
       prices: {
         original_price: 995,
         sale_price: null,
       },
-      collection: ['Basic', 'Tees'],
+      categories: ['basic', 'tees'],
       images: [
         '/images/products/shirt2-1.jpg',
         '/images/products/shirt2-2.jpg',
@@ -267,11 +270,12 @@ const data = {
       name: 'Short sleeve T-shirt with print',
       slug: 'short-sleeve-t-shirt-with-print',
       longDescription: 'Short sleeve T-shirt with print',
+      shortDescription: null,
       prices: {
         original_price: 995,
         sale_price: null,
       },
-      collection: ['Basic', 'Tees'],
+      categories: ['basic', 'tees'],
       images: [
         '/images/products/shirt4-1.jpg',
         '/images/products/shirt4-2.jpg',
@@ -322,11 +326,12 @@ const data = {
       name: 'Extra loose short sleeve T-shirt with print',
       slug: 'loose-shirt-print',
       longDescription: 'Extra loose short sleeve T-shirt with print',
+      shortDescription: null,
       prices: {
         original_price: 1245,
         sale_price: 355,
       },
-      collection: ['Basic', 'Tees'],
+      categories: ['basic', 'tees'],
       images: ['/images/products/tee1-1.jpg', '/images/products/tee1-2.jpg'],
       sizes: [
         {
@@ -373,11 +378,12 @@ const data = {
       slug: 'floral-tshirt-long',
       longDescription:
         'The Dove Mini Dress is cut from our exclusive Posse Lilou print. It features a stunning low neckline and voluminous short sleeves. It has elastic throughout the neckline and back to customise the fit. ',
+      shortDescription: null,
       prices: {
         original_price: 1495,
         sale_price: 395,
       },
-      collection: ['Basic', 'Tees'],
+      categories: ['basic', 'tees'],
       images: [
         '/images/products/sweatshirt1-1.jpg',
         '/images/products/sweatshirt1-2.jpg',

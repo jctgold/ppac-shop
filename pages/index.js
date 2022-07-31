@@ -4,9 +4,11 @@ import Link from 'next/link';
 import data from '../utils/data';
 import ProductItem from '../components/ProductItem';
 import Image from 'next/image';
+import Product from '../models/Product';
+import db from '../utils/db';
 
-export default function Home() {
-  const newArrivalItems = data.products.slice(0, 3);
+export default function Home({ products }) {
+  const newArrivalItems = products.slice(0, 3);
   return (
     <Layout>
       <div className="h-screen bg-home-slide bg-cover flex flex-col gap-4 justify-center items-center bg-center">
@@ -95,4 +97,14 @@ export default function Home() {
       </div>
     </Layout>
   );
+}
+
+export async function getServerSideProps() {
+  await db.connect();
+  const products = await Product.find().lean();
+  return {
+    props: {
+      products: products.map(db.convertDocToObj),
+    },
+  };
 }

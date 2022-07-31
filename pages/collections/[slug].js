@@ -8,11 +8,13 @@ import { Menu, Transition } from '@headlessui/react';
 import { AiOutlineDown } from 'react-icons/ai';
 import DropdownLink from '../../components/DropdownLink';
 import NotFound from '../../components/NotFound';
+import Product from '../../models/Product';
+import db from '../../utils/db';
 
 const totalProducts = 64;
 const loadedProducts = 16;
 
-export default function CollectionsScreen() {
+export default function CollectionsScreen({ products }) {
   const router = useRouter();
   const { query } = router;
   const { slug } = query;
@@ -75,14 +77,15 @@ export default function CollectionsScreen() {
           </div>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {data.products.length > 0 &&
-            data.products.map((item) => (
-              <ProductItem key={item.slug} item={item} />
-            ))}
+          {products.length > 0 ? (
+            products.map((item) => <ProductItem key={item.slug} item={item} />)
+          ) : (
+            <div>No items found.</div>
+          )}
         </div>
         <div className="flex flex-col text-center uppercase text-sm items-center gap-3">
           <p>
-            You&apos;ve viewed {loadedProducts} of {totalProducts} products
+            You&apos;ve viewed {loadedProducts} of {products.length} products
           </p>
           <div className="w-64 h-0.5 bg-gray-200">
             <div
@@ -99,4 +102,19 @@ export default function CollectionsScreen() {
       </div>
     </Layout>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const { slug } = params;
+
+  await db.connect();
+  const products = await Product.find({
+    categories: slug,
+  }).lean();
+  return {
+    props: {
+      products: products.map(db.convertDocToObj),
+    },
+  };
 }

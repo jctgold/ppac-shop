@@ -5,14 +5,16 @@ import Layout from '../../components/Layout';
 import data from '../../utils/data';
 import Image from 'next/image';
 import NotFound from '../../components/NotFound';
+import Product from '../../models/Product';
+import db from '../../utils/db';
 
-export default function ProductScreen({}) {
+export default function ProductScreen({ product }) {
   const [selectedSize, setSelectedSize] = useState('XS');
   const [imageIndex, setImageIndex] = useState(0);
 
-  const { query } = useRouter();
-  const { slug } = query;
-  const product = data.products.find((x) => x.slug === slug);
+  // const { query } = useRouter();
+  // const { slug } = query;
+  // const product = data.products.find((x) => x.slug === slug);
 
   if (!product)
     return (
@@ -97,4 +99,18 @@ export default function ProductScreen({}) {
       </div>
     </Layout>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const { slug } = params;
+
+  await db.connect();
+  const product = await Product.findOne({ slug }).lean();
+
+  return {
+    props: {
+      product: product ? db.convertDocToObj(product) : null,
+    },
+  };
 }

@@ -41,6 +41,13 @@ function convertDocToObj(doc) {
   doc._id = doc._id.toString();
   doc.createdAt = doc.createdAt.toString();
   doc.updatedAt = doc.updatedAt.toString();
+
+  if (doc.prices) doc.prices = JSON.parse(JSON.stringify(doc.prices));
+  if (doc.categories)
+    doc.categories = JSON.parse(JSON.stringify(doc.categories));
+  if (doc.images) doc.images = JSON.parse(JSON.stringify(doc.images));
+  if (doc.sizes) doc.sizes = JSON.parse(JSON.stringify(doc.sizes));
+
   return doc;
 }
 

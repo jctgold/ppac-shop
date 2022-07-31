@@ -31,10 +31,10 @@ export default function CartItem({ item }) {
         />
       </div>
       <div className="flex flex-col justify-between w-full my-1">
-        <div className="flex flex-col gap-1">
-          <div className="uppercase text-sm font-semibold">{item.name}</div>
-          <div className="uppercase text-sm ">{item.size}</div>
-          <div className="uppercase text-sm ">P{item.price}</div>
+        <div className="flex flex-col gap-1 uppercase text-sm ">
+          <div className="font-semibold">{item.name}</div>
+          <div>{item.size}</div>
+          <div>₱{item.price}</div>
         </div>
         <div className="flex justify-between w-full items-center">
           <div className="flex items-center gap-3 border border-black px-2.5 py-1.5 text-xs justify-evenly">

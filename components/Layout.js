@@ -41,7 +41,7 @@ export default function Layout({ title, children }) {
   return (
     <>
       <Head>
-        <title>{title ? title + ' - PPAC' : 'PPAC'}</title>
+        <title>{title ? title + ' - REVER' : 'REVER'}</title>
         <meta name="description" content="Ecommerce Website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

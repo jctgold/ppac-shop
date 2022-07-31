@@ -11,38 +11,38 @@ export default function Cart({ onBackPress }) {
   }, []);
 
   const cartItems = [
-    // {
-    //   name: 'Product Name',
-    //   slug: '001',
-    //   size: 'XS',
-    //   price: 500,
-    //   quantity: 2,
-    //   image: '/images/products/shirt1-1.jpg',
-    // },
-    // {
-    //   name: 'Product Name 2',
-    //   size: 'M',
-    //   slug: '002',
-    //   price: 1000,
-    //   quantity: 1,
-    //   image: '/images/products/shirt4-1.jpg',
-    // },
-    // {
-    //   name: 'Product Name',
-    //   slug: '001',
-    //   size: 'XS',
-    //   price: 500,
-    //   quantity: 2,
-    //   image: '/images/products/shirt1-1.jpg',
-    // },
-    // {
-    //   name: 'Product Name 2',
-    //   size: 'M',
-    //   slug: '002',
-    //   price: 1000,
-    //   quantity: 1,
-    //   image: '/images/products/shirt4-1.jpg',
-    // },
+    {
+      name: 'Product Name',
+      slug: '001',
+      size: 'XS',
+      price: 500,
+      quantity: 2,
+      image: '/images/products/shirt1-1.jpg',
+    },
+    {
+      name: 'Product Name 2',
+      size: 'M',
+      slug: '002',
+      price: 1000,
+      quantity: 1,
+      image: '/images/products/shirt4-1.jpg',
+    },
+    {
+      name: 'Product Name',
+      slug: '001',
+      size: 'XS',
+      price: 500,
+      quantity: 2,
+      image: '/images/products/shirt1-1.jpg',
+    },
+    {
+      name: 'Product Name 2',
+      size: 'M',
+      slug: '002',
+      price: 1000,
+      quantity: 1,
+      image: '/images/products/shirt4-1.jpg',
+    },
   ];
 
   const handleBlurEvent = (event) => {
@@ -84,7 +84,7 @@ export default function Cart({ onBackPress }) {
           <div
             className={`${
               cartItems.length < 1 ? 'justify-center' : 'justify-start'
-            } flex flex-col h-full p-4 gap-6 overflow-auto`}
+            } flex flex-col h-full p-4 gap-5 overflow-auto`}
           >
             {cartItems.length < 1 ? (
               <div className="flex flex-col self-center text-center gap-5">
