@@ -1,6 +1,13 @@
 import { Menu, Transition } from '@headlessui/react';
 import Head from 'next/head';
-import React, { Fragment, useState } from 'react';
+import React, {
+  Fragment,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import { BiMenu } from 'react-icons/bi';
 import { BsBag, BsPerson } from 'react-icons/bs';
 import { AiOutlineDown } from 'react-icons/ai';
@@ -9,12 +16,20 @@ import DropdownLink from './DropdownLink';
 import Link from 'next/link';
 import Cart from './Cart';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Store } from '../utils/Store';
+import dynamic from 'next/dynamic';
 
-export default function Layout({ title, children }) {
+function Layout({ title, children }) {
   const [navOpen, setNavOpen] = useState(false);
   const [searchFocus, setSearchFocus] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [search, setSearch] = useState('');
+
+  const { state, dispatch } = useContext(Store);
+  const {
+    cart: { cartItems },
+  } = state;
+  // const router = useRouter();
 
   const handleClearSearch = () => {
     setSearch('');
@@ -144,7 +159,9 @@ export default function Layout({ title, children }) {
                 type="button"
               >
                 <BsBag size={19} />
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 border-white border-2 rounded-full" />
+                {cartItems.length > 0 && (
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 border-white border-0 md:border-2 rounded-full" />
+                )}
               </button>
             </div>
             <div
@@ -258,3 +275,5 @@ export default function Layout({ title, children }) {
     </>
   );
 }
+
+export default dynamic(() => Promise.resolve(Layout), { ssr: false });

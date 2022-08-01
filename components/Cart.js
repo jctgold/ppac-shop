@@ -1,54 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
 import CartItem from './CartItem';
 import { AnimatePresence, motion } from 'framer-motion';
 import { AiOutlineClose } from 'react-icons/ai';
 import { IoClose, IoCloseOutline } from 'react-icons/io5';
+import { Store } from '../utils/Store';
+import dynamic from 'next/dynamic';
+// import { useRouter } from 'next/router';
 
-export default function Cart({ onBackPress }) {
+function Cart({ onBackPress }) {
+  const { state, dispatch } = useContext(Store);
+  const {
+    cart: { cartItems },
+  } = state;
+  // const router = useRouter();
+
   useEffect(() => {
     document.getElementById('cart').focus();
   }, []);
-
-  const cartItems = [
-    {
-      name: 'Product Name',
-      slug: '001',
-      size: 'XS',
-      price: 500,
-      quantity: 2,
-      image: '/images/products/shirt1-1.jpg',
-    },
-    {
-      name: 'Product Name 2',
-      size: 'M',
-      slug: '002',
-      price: 1000,
-      quantity: 1,
-      image: '/images/products/shirt4-1.jpg',
-    },
-    {
-      name: 'Product Name',
-      slug: '001',
-      size: 'XS',
-      price: 500,
-      quantity: 2,
-      image: '/images/products/shirt1-1.jpg',
-    },
-    {
-      name: 'Product Name 2',
-      size: 'M',
-      slug: '002',
-      price: 1000,
-      quantity: 1,
-      image: '/images/products/shirt4-1.jpg',
-    },
-  ];
 
   const handleBlurEvent = (event) => {
     if (!event.currentTarget.contains(event.relatedTarget)) {
       onBackPress();
     }
+  };
+
+  const removeItemHandler = (item) => {
+    dispatch({ type: 'CART_REMOVE_ITEM', payload: item });
+  };
+
+  const updateCartHandler = async (item, qty) => {
+    const quantity = Number(qty);
+    const { data } = await axios.get(`/api/products/${item._id}`);
+    // if (data.countInStock < quantity) {
+    //   return toast.error('Sorry. Product is out of stock');
+    // }
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } });
+    toast.success('Product updated in the cart');
   };
 
   return (
@@ -65,7 +53,7 @@ export default function Cart({ onBackPress }) {
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 1, x: 600 }}
         transition={{ duration: 0.5 }}
-        onBlur={(event) => handleBlurEvent(event)}
+        onBlur={handleBlurEvent}
         id="cart"
         tabIndex={-1}
       >
@@ -91,15 +79,37 @@ export default function Cart({ onBackPress }) {
                 <div className="text-sm uppercase">Your bag is empty.</div>
               </div>
             ) : (
-              cartItems.map((item) => <CartItem item={item} key={item.slug} />)
+              cartItems.map((item) => (
+                <CartItem
+                  item={item}
+                  key={item.slug}
+                  onQuantityChange={(e) =>
+                    updateCartHandler(item, e.target.value)
+                  }
+                  onRemoveItem={() => removeItemHandler(item)}
+                />
+              ))
             )}
           </div>
           <div className="flex flex-col p-4 border-t border-black dark:border-white gap-3">
             <div className="flex justify-between items-center w-full ">
               <div className="uppercase text-sm">Subtotal</div>
-              <div className="font-semibold">P1,000</div>
+              <div className="font-semibold">
+                P
+                {cartItems.reduce(
+                  (a, c) =>
+                    a +
+                    c.quantity *
+                      (c.prices.sale_price || c.prices.original_price),
+                  0
+                )}
+              </div>
             </div>
-            <button className="primary-button" type="button">
+            <button
+              disabled={`${cartItems.length > 0 ? 'false' : 'true'}`}
+              className={`disabled:bg-gray-300  primary-button`}
+              type="button"
+            >
               Checkout
             </button>
           </div>
@@ -108,3 +118,5 @@ export default function Cart({ onBackPress }) {
     </div>
   );
 }
+
+export default dynamic(() => Promise.resolve(Cart), { ssr: false });

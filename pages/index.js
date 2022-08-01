@@ -9,6 +9,7 @@ import db from '../utils/db';
 
 export default function Home({ products }) {
   const newArrivalItems = products.slice(0, 3);
+
   return (
     <Layout>
       <div className="h-screen bg-home-slide bg-cover flex flex-col gap-4 justify-center items-center bg-center">

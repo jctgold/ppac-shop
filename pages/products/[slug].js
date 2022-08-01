@@ -1,20 +1,44 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
 import data from '../../utils/data';
 import Image from 'next/image';
+import { Store } from '../../utils/Store';
 import NotFound from '../../components/NotFound';
 import Product from '../../models/Product';
 import db from '../../utils/db';
+import axios from 'axios';
 
 export default function ProductScreen({ product }) {
+  const { state, dispatch } = useContext(Store);
+
+  const [updatingCart, setUpdatingCart] = useState(false);
   const [selectedSize, setSelectedSize] = useState('XS');
   const [imageIndex, setImageIndex] = useState(0);
 
   // const { query } = useRouter();
   // const { slug } = query;
   // const product = data.products.find((x) => x.slug === slug);
+
+  const addToCartHandler = async () => {
+    setUpdatingCart(true);
+    const existItem = state.cart.cartItems.find(
+      (x) => x.slug === product.slug && x.size === selectedSize
+    );
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+    const { data } = await axios.get(`/api/products/${product._id}`);
+
+    // if (data.countInStock < quantity) {
+    //   return toast.error('Sorry. Product is out of stock');
+    // }
+
+    dispatch({
+      type: 'CART_ADD_ITEM',
+      payload: { ...product, size: selectedSize, quantity },
+    });
+    setUpdatingCart(false);
+  };
 
   if (!product)
     return (
@@ -91,8 +115,12 @@ export default function ProductScreen({ product }) {
               </div>
             </div>
 
-            <button className="primary-button w-full " type="button">
-              Add to Cart
+            <button
+              className="primary-button w-full "
+              type="button"
+              onClick={addToCartHandler}
+            >
+              {updatingCart ? 'Adding to Cart...' : 'Add to Cart'}
             </button>
           </div>
         </div>
