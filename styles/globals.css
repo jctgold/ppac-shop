@@ -32,7 +32,7 @@ a {
 
 @layer components {
   .dropdown-container {
-    @apply absolute origin-top-right py-2 border border-black bg-white;
+    @apply absolute origin-top-right py-2 border border-black dark:border-white bg-white dark:bg-black;
   }
 
   .dropdown-item {
@@ -60,11 +60,11 @@ a {
   }
 
   .primary-button {
-    @apply uppercase bg-black text-white p-3 text-sm;
+    @apply uppercase bg-black dark:bg-white text-white dark:text-black p-3 text-sm;
   }
 
   .secondary-button {
-    @apply uppercase text-black p-3 text-sm border border-black;
+    @apply uppercase text-black dark:text-white p-3 text-sm border border-black dark:border-white;
   }
 
   .section-title {
@@ -72,6 +72,6 @@ a {
   }
 
   .input-box {
-    @apply border border-black p-3 placeholder:text-black text-sm w-full;
+    @apply border border-black dark:border-white p-3 placeholder:text-black dark:placeholder:text-white text-sm w-full;
   }
 }

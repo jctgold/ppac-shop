@@ -37,7 +37,7 @@ export default function CartItem({ item }) {
           <div>₱{item.price}</div>
         </div>
         <div className="flex justify-between w-full items-center">
-          <div className="flex items-center gap-3 border border-black px-2.5 py-1.5 text-xs justify-evenly">
+          <div className="flex items-center gap-3 border border-black dark:border-white px-2.5 py-1.5 text-xs justify-evenly">
             <button
               onClick={() => handleQuantityChange('minus')}
               disabled={qty <= 1 && true}

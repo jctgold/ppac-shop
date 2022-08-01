@@ -60,7 +60,7 @@ export default function Cart({ onBackPress }) {
         className="absolute top w-full h-full bg-black bg-opacity-75 -z-10"
       />
       <motion.div
-        className="w-full h-screen sm:max-w-md bg-white ml-auto border-l border-black"
+        className="w-full h-screen sm:max-w-md bg-white dark:bg-black ml-auto border-l border-black dark:border-white"
         initial={{ opacity: 1, x: 600 }}
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 1, x: 600 }}
@@ -70,7 +70,7 @@ export default function Cart({ onBackPress }) {
         tabIndex={-1}
       >
         <div className="flex flex-col h-full justify-between">
-          <div className="flex p-4 border-b border-black items-center gap-3 justify-between">
+          <div className="flex p-4 border-b border-black dark:border-white items-center gap-3 justify-between">
             <div className="flex flex-row items-center gap-2">
               <div className="uppercase font-semibold">Cart</div>
               <div className="text-xs">
@@ -94,7 +94,7 @@ export default function Cart({ onBackPress }) {
               cartItems.map((item) => <CartItem item={item} key={item.slug} />)
             )}
           </div>
-          <div className="flex flex-col p-4 border-t border-black gap-3">
+          <div className="flex flex-col p-4 border-t border-black dark:border-white gap-3">
             <div className="flex justify-between items-center w-full ">
               <div className="uppercase text-sm">Subtotal</div>
               <div className="font-semibold">P1,000</div>

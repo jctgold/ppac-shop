@@ -49,28 +49,24 @@ export default function Layout({ title, children }) {
       <div className={`flex flex-col justify-between`}>
         <header>
           <nav
-            className="fixed grid grid-cols-3 w-screen px-4 md:px-8 align-middle items-stretch justify-between border-b border-black bg-white z-10"
+            className="fixed grid grid-cols-3 w-screen px-4 md:px-8 align-middle items-stretch justify-between z-10 border-b border-black bg-white dark:border-white dark:bg-black text-black dark:text-white"
             onBlur={(event) => handleBlurEvent(event)}
           >
             <button
-              className="inline-flex order-1 md:hidden items-center ml-3 text-gray-400 rounded-lg hover:text-gray-900 focus:outline-none"
+              className="inline-flex order-1 md:hidden items-center ml-3 text-black dark:text-white rounded-lg focus:outline-none"
               type="button"
               id="menu-button"
               onClick={handleNavMenu}
             >
-              {navOpen ? (
-                <IoCloseOutline color="black" size={24} />
-              ) : (
-                <BiMenu color="black" size={24} />
-              )}
+              {navOpen ? <IoCloseOutline size={24} /> : <BiMenu size={24} />}
             </button>
             <div
               className={`${
                 !navOpen && 'hidden'
-              } w-full order-4 md:order-1 md:flex md:items-stretch md:w-auto`}
+              } w-full order-4 md:order-1 md:flex md:items-stretch md:w-auto bg-white dark:bg-black`}
               id="menu"
             >
-              <ul className="flex flex-col pb-4 md:pb-0 md:flex-row text-xs uppercase md:items-center whitespace-nowrap">
+              <ul className="flex flex-col pb-4 md:pb-0 md:flex-row text-xs uppercase md:items-center whitespace-nowrap ">
                 <li className="px-5 py-3">
                   <Link href="/collections/new-in">New In</Link>
                 </li>
@@ -180,7 +176,7 @@ export default function Layout({ title, children }) {
 
         <main className="min-h-screen">{children}</main>
 
-        <footer className="p-12 md:px-16 lg:px-24 border-t border-black">
+        <footer className="p-12 md:px-16 lg:px-24 border-t border-black dark:border-white">
           <div className="grid grid-cols-1 text-center md:text-left md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div>
               <div className="footer-list-title">Customer Care</div>
@@ -236,15 +232,15 @@ export default function Layout({ title, children }) {
             </div>
             <div>
               <div className="footer-list-title">Be the first to know</div>
-              <div className="inline-flex">
+              <div className="inline-flex border-b border-black dark:border-white">
                 <input
-                  className="border-b border-black text-xs uppercase py-2  focus:outline-none placeholder:text-black autofill:!bg-transparent"
+                  className="text-xs uppercase py-2  focus:outline-none placeholder:text-black dark:placeholder:text-white bg-transparent"
                   placeholder="email"
                   // type="email"
                   name="email"
                   size={30}
                 />
-                <button className="border-b border-black text-black text-xs uppercase py-2 font-semibold pl-2">
+                <button className=" text-black dark:text-white text-xs uppercase py-2 font-semibold pl-2">
                   &gt;
                 </button>
               </div>

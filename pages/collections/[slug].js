@@ -87,9 +87,9 @@ export default function CollectionsScreen({ products }) {
           <p>
             You&apos;ve viewed {loadedProducts} of {products.length} products
           </p>
-          <div className="w-64 h-0.5 bg-gray-200">
+          <div className="w-64 h-0.5 bg-gray-200 dark:bg-gray-500">
             <div
-              className="bg-black h-full"
+              className="bg-black dark:bg-white h-full"
               style={{
                 width: `${(loadedProducts / totalProducts) * 100}%`,
               }}
